@@ -13,9 +13,11 @@ class App extends Component {
   };
 
   formSubmitHandler = data => {
-    console.log(data);
     this.setState(prevState => {
-      return { contacts: contacts.push(prevState) };
+      console.log(prevState);
+      return {
+        contacts: [data],
+      };
     });
   };
 
