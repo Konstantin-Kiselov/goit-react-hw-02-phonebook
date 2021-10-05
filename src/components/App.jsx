@@ -34,6 +34,12 @@ class App extends Component {
     });
   };
 
+  deleteContact = contactId => {
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(contact => contact.id !== contactId),
+    }));
+  };
+
   changeFitler = e => {
     this.setState({ filter: e.target.value });
   };
@@ -58,7 +64,10 @@ class App extends Component {
         </Section>
         <Section title="Contacts">
           <Filter value={filter} onChange={this.changeFitler} />
-          <ContactList contacts={visibleContacts} />
+          <ContactList
+            contacts={visibleContacts}
+            onDeleteContact={this.deleteContact}
+          />
         </Section>
       </Container>
     );
